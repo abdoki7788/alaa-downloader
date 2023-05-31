@@ -10,26 +10,21 @@ document.addEventListener('alpine:init', () => {
         fetchErrorTitle: "مشکلی هست!",
         episodes: [],
         coursePage: "",
-        courseDetail: {},
-        async fetchEpisodes() {
-            this.courseDetail.forEach(async value => {
-                let myValue = {...value}
-                let episodeUrl = myValue.url
-                await fetch(episodeUrl, {
-                    responseType: 'html/text'
-                }).then(async response => {
-                    if (response.status == 200) {
-                        let episode = await response.text()
-                        console.log(myValue.position)
-                        this.fetchingText = `در حال واکشی قسمت ها : قسمت ${myValue.position}`
-                    }
-                })
-            })
-        },
         async getEpisodes(courseHTML) {
             var doc = new DOMParser().parseFromString(courseHTML, "text/html");
-            this.courseDetail = JSON.parse(doc.querySelectorAll('script[type="application/ld+json"]')[1].innerHTML).itemListElement
-            await this.fetchEpisodes()
+            courseDetail = JSON.parse(doc.querySelectorAll('script[type="application/ld+json"]')[1].innerHTML).itemListElement
+            for (const value of courseDetail) {
+                console.log(value)
+                let episodeUrl = value.url;
+                const response = await fetch(episodeUrl, {
+                    responseType: 'html/text'
+                });
+                if (response.status == 200) {
+                    let episode = await response.text();
+                    console.log(value.position);
+                    this.fetchingText = `در حال واکشی قسمت ها : قسمت ${value.position}.`;
+                }
+            }
         },
         async fetchCourse() {
             this.episodes = []
@@ -41,7 +36,11 @@ document.addEventListener('alpine:init', () => {
                     let body = await response.text()
                     this.coursePage = body
                     await this.getEpisodes(this.coursePage)
-                    this.fetching = false
+                    this.fetchingText = "عملیات کامل شد!"
+                    setInterval(() => {
+                        console.log('h')
+                        this.fetching = false
+                    }, 2000)
                 } else if (response.status == 404) {
                     this.fetchErrorMessage = 'لینک وارد شده وجود ندارد لطفا دوباره امتحان کنید'
                     this.fetchErrorTitle = 'لینک اشتباه'
