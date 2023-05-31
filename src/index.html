@@ -32,7 +32,7 @@
                 class="flex items-center justify-center rounded-full w-14 h-14 bg-gradient-to-tr from-indigo-500 to-pink-700 animate-spin mb-8 ">
                 <div class="h-9 w-9 rounded-full bg-gray-700"></div>
             </div>
-            <span class="text-gray-300 font-mikhak-regular">در حال دریافت اطلاعات دوره</span>
+            <span class="text-gray-300 font-mikhak-regular" x-text="fetchingText"></span>
         </div>
         <div class="block w-full">
             <label for="link" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">لینک دوره</label>
@@ -68,7 +68,6 @@
     </template>
     <script src="/src/js/particles.min.js"></script>
     <script src="/src/js/background.js"></script>
-    <script src="/src/js/axios.min.js"></script>
     <script src="/src/js/main.js"></script>
 </body>
 
