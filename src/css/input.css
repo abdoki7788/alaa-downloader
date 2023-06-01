@@ -1,19 +1,19 @@
 
 @font-face {
     font-family: "shabnam-bold";
-    src: url("/static/fonts/Shabnam-Bold.woff2");
+    src: url("../fonts/Shabnam-Bold.woff2");
 }
 @font-face {
     font-family: "shabnam-medium";
-    src: url("/static/fonts/Shabnam-Medium.woff2");
+    src: url("../fonts/Shabnam-Medium.woff2");
 }
 @font-face {
     font-family: "mikhak-bold";
-    src: url("/static/fonts/Mikhak-Bold.woff2");
+    src: url("../fonts/Mikhak-Bold.woff2");
 }
 @font-face {
     font-family: "mikhak-regular";
-    src: url("/static/fonts/Mikhak-Regular.woff2");
+    src: url("../fonts/Mikhak-Regular.woff2");
 }
 
 @tailwind base;

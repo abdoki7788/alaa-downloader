@@ -14,8 +14,8 @@ module.exports = {
         "mikhak-regular": ["mikhak-regular"],
       },
       backgroundImage: {
-        "dark-pattern": "url('/static/dark-bg.jpg')",
-        "light-pattern": "url('/static/light-bg.jpg')",
+        "dark-pattern": "url('../images/dark-bg.jpg')",
+        "light-pattern": "url('../images/light-bg.jpg')",
       }
     },
   },
